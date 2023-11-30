@@ -26,6 +26,15 @@ h6 {
   font-family: "Lato", sans-serif;
 }
 
+@keyframes moveUpDown {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
 /*--------------------------------------------------------------
 # Back to top button
 --------------------------------------------------------------*/
@@ -512,6 +521,12 @@ h6 {
     max-width: 600px; 
 }
 
+#hero .boxHero {
+  animation-name: moveUpDown; 
+  animation-duration: 2s; 
+  animation-iteration-count: infinite; 
+}
+
 @media (min-width: 1024px) {
   #hero {
     background-attachment: fixed;
@@ -576,6 +591,11 @@ h6 {
     max-width: 100%;
     height: auto;
     opacity: 70%;
+}
+#banner .boxBanner {
+  animation-name: moveUpDown; 
+  animation-duration: 2s; 
+  animation-iteration-count: infinite; 
 }
 
 #banner:before {
@@ -1118,6 +1138,12 @@ section {
     max-width: 100%;
     height: auto;
     opacity: 70%;
+}
+
+#services .boxServices {
+  animation-name: moveUpDown; 
+  animation-duration: 2s; 
+  animation-iteration-count: infinite; 
 }
 
 #services .container {
