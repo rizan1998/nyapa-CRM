@@ -35,8 +35,8 @@
                 </div>
             
                 <div class="mb-1">
-                    <label class="form-label" for="detail">Detail</label>
-                    <input type="text" class="form-control" name="detail" id="detail" value="{{ $started->details }}" required />
+                    <label class="form-label" for="details">Detail</label>
+                    <input type="text" class="form-control" name="details" id="details" value="{{ $started->details }}" required />
                 </div>
                 <div class="mb-1">
                     <label class="form-label" for="text">Text</label>

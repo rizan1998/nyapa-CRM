@@ -29,7 +29,7 @@
     <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
     <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
     <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
+    
     <!-- Template Main CSS File -->
     <link href="assets/css/style.css" rel="stylesheet">
 
@@ -61,7 +61,7 @@
     
     <section id="banner" class="d-flex align-items-center">
         <div class="square">
-            <img src="{{asset('assets/img/box-banner.png')}}" alt="">
+            <img class="boxBanner" src="{{asset('assets/img/box-banner.png')}}" alt="">
         </div>
         <div class="container">
             <div class="row">
@@ -89,7 +89,8 @@
    
         <section id="hero" class="d-flex align-items-center">
             <div class="square">
-                <img src="{{asset('assets/img/box-hero.png')}}" alt="">
+                <img class="boxHero" src="{{ asset('assets/img/box-hero.png') }}"
+                    alt="">
             </div>
             <div class="container">
                 <div class="row">
@@ -115,7 +116,7 @@
         <section id="services">
             <div class="container">
                 <div class="square">
-                    <img src="{{asset('assets/img/box-services.png')}}" alt="">
+                    <img class="boxServices" src="{{asset('assets/img/box-services.png')}}" alt="">
                 </div>
                 <div class="text">
                     @foreach ($service as $service )

@@ -67,7 +67,7 @@ class StartedController extends Controller
     public function edit($id)
     {
         $started = Started::findOrFail($id);
-        return view('admin.started.edit');
+        return view('admin.started.edit',compact('started'));
     }
 
     /**
