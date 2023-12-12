@@ -37,6 +37,7 @@ class TestimonialController extends Controller
     public function store(Request $request)
 {
     $request->validate([
+        'rating' => 'required',
         'quote' => 'required',
         'name' => 'required',
         'job' => 'required',
@@ -44,6 +45,7 @@ class TestimonialController extends Controller
     ]);
 
     $testimonial = new Testimonial();
+    $testimonial->rating = $request->input('rating');
     $testimonial->quote = $request->input('quote');
     $testimonial->name = $request->input('name');
     $testimonial->job = $request->input('job');
@@ -93,6 +95,7 @@ class TestimonialController extends Controller
     public function update(Request $request, $id)
     {
     $validatedData = $request->validate([
+        'rating' => 'required',
         'quote' => 'required',
         'name' => 'required',
         'job' => 'required',
@@ -100,7 +103,7 @@ class TestimonialController extends Controller
     ]);
 
     $testimonial = Testimonial::findOrFail($id);
-
+    $testimonial->rating = $validatedData['rating'];
     $testimonial->quote = $validatedData['quote'];
     $testimonial->name = $validatedData['name'];
     $testimonial->job = $validatedData['job'];

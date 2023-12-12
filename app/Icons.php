@@ -22,4 +22,9 @@ class Icons extends Model
         return $this->hasMany(ServiceCard::class, 'icon_id');
     }
 
+    public function features()
+    {
+        return $this->hasMany(Feature::class, 'icon', 'icon_name');
+    }
+
 }

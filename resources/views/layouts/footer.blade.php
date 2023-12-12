@@ -21,7 +21,7 @@
     <!-- BEGIN: Vendor JS-->
     <script src="{{ asset('app-assets/vendors/js/vendors.min.js') }}"></script>
     <!-- BEGIN Vendor JS-->
-
+    
     <script src="{{ asset('app-assets/vendors/js/tables/datatable/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('app-assets/vendors/js/tables/datatable/dataTables.bootstrap5.min.js') }}"></script>
     <script src="{{ asset('app-assets/vendors/js/tables/datatable/dataTables.responsive.min.js') }}"></script>
@@ -57,6 +57,7 @@
     <script src="https://cdn.ckeditor.com/4.20.0/standard/ckeditor.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-messaging.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/5.2.0/tinymce.min.js"></script>
     <script>
         $(window).on('load', function() {
                 if (feather) {
@@ -96,6 +97,10 @@
                 toastr.success("{{ session('success') }}");
             @endif
         });
+        
+        
+
+        
     </script>
 
     @yield('scripts')

@@ -43,9 +43,8 @@
                                             placeholder="Title" id="title" required />
                                     </div>
                                     <div class="mb-1">
-                                        <label class="form-label" for="">Detail</label>
-                                        <input type="text" class="form-control" name="details" autocomplete="off"
-                                            placeholder="Detail" id="details" required />
+                                        <label class="form-label" for="detail">Detail</label>
+                                        <textarea id="details" name="details" class="form-control" required></textarea>
                                     </div>
                                     <div class="mb-1">
                                         <label class="form-label" for="">Gambar</label>
@@ -67,4 +66,12 @@
         </div>
     </section>
 </div>
+@endsection
+@section('scripts')
+<script>
+    tinymce.init({
+        selector: 'textarea#details',
+        height: 350,
+        });
+</script>
 @endsection

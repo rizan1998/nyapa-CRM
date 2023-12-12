@@ -29,6 +29,8 @@
     <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
     <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
     <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+/>
     
     <!-- Template Main CSS File -->
     <link href="assets/css/style.css" rel="stylesheet">
@@ -41,7 +43,7 @@
     <header id="header" class="fixed-top">
         <div class="container d-flex align-items-center justify-content-between">
 
-            <a href="#" class="logo"><img src="{{asset('images/logo-nyapa.png')}}" alt="" class="img-fluid"></a>
+            <a href="/" class="logo"><img src="{{asset('images/logo-nyapa.png')}}" alt="" class="img-fluid"></a>
 
             <nav id="navbar" class="navbar">
                 <ul>
@@ -49,7 +51,10 @@
                     <li><a class="nav-link scrollto" href="#hero">About Us</a></li>
                     <li><a class="nav-link scrollto" href="#services">Services</a></li>
                     <li><a class="nav-link scrollto" href="#pricing">Pricing</a></li>
-                    <li><a class="getstarted scrollto" href="#about"><i class="bx bx-phone"></i> Mulai Sekarang</a></li>
+                    @foreach ($buttonlink as $buttonlink )
+                    <li><a class="getstarted scrollto" href="{{$buttonlink->link}} " target="_blank"><i class="bx bx-phone"></i> Mulai Sekarang</a></li>    
+                    @endforeach
+                    
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
@@ -70,8 +75,8 @@
                         <h3>{{$banner->header}}</h3>
                         <h1>{{$banner->title}}</h1>
                         <h3>{{$banner->details}}</h3>
-                        <div class="text-center">
-                            <a href="#about" class="btn-get-started scrollto"><i class="bx bx-phone"></i>Mulai Sekarang</a>
+                        <div class="text-left">
+                            <a href="{{$buttonlink->link}}" target="_blank" class="btn-get-started scrollto"><i class="bx bx-phone"></i>Mulai Sekarang</a>
                         </div>
                     </div>
                     <div class="col-md-6 text-center">
@@ -95,20 +100,25 @@
             <div class="container">
                 <div class="row">
                     @foreach ($hero as $hero )
-                        
-                    @endforeach
-                    <div class="col-md-4 mb-5 text-justify" style="display: inline-block">
-                        <img src="{{$hero->image1}}" alt="Logo" class="img-fluid" />
+                    <div class="col-md-3 mb-5 text-justify" style="display: inline-block; margin-right: -10px">
+                        <img src="{{ url('storage/'.$hero->image1)}}" alt="Logo" class="img-fluid" />
                     </div>
-                    <div class="col-md-4 mb-5 text-center" style="display: inline-block">
-                        <img src="{{$hero->image2}}" alt="Logo" class="img-fluid" />
+                    <div class="col-md-3 mb-5 text-center" style="display: inline-block; margin-left: 0px">
+                        <img src="{{ url('storage/'.$hero->image2)}}" alt="Logo" class="img-fluid" />
                     </div>
                     <div class="text">
                         <h1>{{$hero->header}}</h1>
                         <p>
                         <h5>{{$hero->details}}</h5>
                         </p>
+                        <div class="details-link">
+                            <a href="https://www.contoh.com">
+                                Selengkapnya
+                                <i class="bx bx-right-arrow-alt"></i>
+                            </a>
+                        </div>
                     </div>
+                    @endforeach
                 </div>
             </div>
         </section><!-- End Hero -->
@@ -127,8 +137,8 @@
                             {{$service->text}}
                         </p>
                         </p>
-                        <div class="text-center">
-                            <a href="#about" class="btn-get-started scrollto"><i class="bx bx-phone"></i> Coba Sekarang</a>
+                        <div class="text-left">
+                            <a href="{{$buttonlink->link}}" target="_blank" class="btn-get-started scrollto"><i class="bx bx-phone"></i> Coba Sekarang</a>
                         </div>
                     @endforeach
                 </div>
@@ -150,26 +160,34 @@
 
         <!-- ======= Pricing Section ======= -->
         <section id="pricing" class="pricing">
+            <div class="square">
+                <img class="boxPricing" src="{{ asset('assets/img/box-pricing.png') }}" alt="">
+            </div>
             <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
         
                 <div class="section-title">
                     <h2>Paket Menarik Buatmu</h2>
                 </div>
                 <div class="row">
-                    @foreach($prices as $price)
+                    @foreach($packetNames as $packetName)
                     <div class="col-lg-4 col-md-4" data-aos="zoom-im" data-aos-delay="100">
                         <div class="box featured">
-                            <h3>{{ $price->packet_name }}</h3>
-                            <h4><sup>Rp</sup>{{ $price->price }}<span>{{$price->unit}}</span></h4>
-                            <h3>{{$price->type}}</h3>
+                            <span class="badge-pricing">
+                                {{$packetName->packet_name}}
+                            </span>
+                            <h4><sup>Rp</sup>{{ $packetName->price }}<span>{{$packetName->unit}}</span></h4>
+                            <h3>{{$packetName->type}}</h3>
                             <hr>
                             <ul>
-                                @foreach(explode(',', $price->feature) as $feature)
-                                <li>{{ $feature }}</li>
+                                @foreach($packetName->features as $feature)
+                                    <li><i class="{{$feature->icon}}"></i>{{ $feature->name }}<i class="{{$feature->icon}}"></i></li>
                                 @endforeach
                             </ul>
                             <div class="btn-wrap">
-                                <a href="#" class="btn-buy">Pilih Paket</a>
+                                <a href="{{$buttonlink->link}}" class="btn-buy">
+                                    Pilih Paket
+                                    <i class="bx bx-right-arrow-circle"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -191,6 +209,17 @@
                                 @foreach ($testimonials as $testimonial )
                                 <div class="swiper-slide">
                                     <div class="testimonial-item">
+                                        <div class="rating">
+                                            <label for="star-rating-{{$testimonial->id}}"></label>
+                                            <div class="stars">
+                                                @for ($i = 1; $i <= 5; $i++) @if ($i <=$testimonial->rating)
+                                                    <i class="bx bxs-star" data-value="{{$i}}"></i>
+                                                    @else
+                                                    <i class="bx bx-star" data-value="{{$i}}"></i>
+                                                    @endif
+                                                    @endfor
+                                            </div>
+                                        </div>
                                         <p>
                                             <i class="bx bxs-quote-alt-left quote-icon-left"></i>
                                             {{$testimonial->quote}}
@@ -203,7 +232,9 @@
                                 </div><!-- End testimonial item -->
                                 @endforeach
                             </div>
+                            <!-- Add Pagination -->
                             <div class="swiper-pagination"></div>
+                            
                         </div>
                 
                     </div>
@@ -213,8 +244,6 @@
                     <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
                         <div class="row">
                             @foreach ($started as $started)
-                                
-                            @endforeach
                             <div class="col-md-12 text-center">
                                 <h1>{{$started->header}}</h1>
                                     <p>
@@ -222,8 +251,9 @@
                                     <p>
                                         <h3>{{$started->text}}</h3></p>
                                 </p>
+                                @endforeach
                                 <div class="text-center">
-                                    <a href="#" class="btn-get-started scrollto">
+                                    <a href="{{$buttonlink->link}}" target="_blank" class="btn-get-started scrollto">
                                     <i class="bx bx-phone"></i>Mulai Sekarang</a>
                                 </div>
                             </div>
@@ -242,9 +272,6 @@
 
                     <div class="col-lg-3 col-md-6 footer-contact">
                         <img src="{{asset('images/logo-nyapa-white.png')}}" alt="" class="img-fluid">
-                        <p>
-                            Input Text Here lorem lorem
-                        </p>
                     </div>
 
                     <div class="col-lg-2 col-md-6 footer-links">

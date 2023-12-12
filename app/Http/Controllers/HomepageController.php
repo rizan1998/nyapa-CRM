@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\{Price,Testimonial,
-    Banner,Social,Product,Service,ServiceCard,Hero,Started};
+    Banner,Social,Product,Service,ServiceCard,Hero,Started,ButtonLink,Feature,PacketName};
 
 class HomepageController extends Controller
 {
@@ -20,6 +20,8 @@ class HomepageController extends Controller
         $secondSetOfData = $service_card->splice(2);
         $hero = Hero::all();
         $started = Started::all();
+        $buttonlink = ButtonLink::all();
+        $packetNames = PacketName::with('features')->get();
         return view('landingpage', compact(
             'prices',
             'testimonials',
@@ -30,7 +32,9 @@ class HomepageController extends Controller
             'firstSetOfData',
             'secondSetOfData',
             'hero',
-            'started'
+            'started',
+            'buttonlink',
+            'packetNames'
         ));
     }
 }

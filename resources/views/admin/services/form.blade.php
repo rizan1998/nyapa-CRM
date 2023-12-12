@@ -38,8 +38,7 @@
                                     </div>
                                     <div class="mb-1">
                                         <label class="form-label" for="detail">Detail</label>
-                                        <input type="text" class="form-control" name="detail" autocomplete="off"
-                                            placeholder="Detail" id="detail" required />
+                                        <textarea id="detail" name="detail" class="form-control"></textarea>
                                     </div>
                                     <div class="mb-1">
                                         <label class="form-label" for="link">Text</label>
@@ -62,4 +61,13 @@
         </div>
     </section>
 </div>
+@endsection
+@section('scripts')
+<script>
+    tinymce.init({
+    selector: 'textarea#detail',
+    height: 350,
+    });
+</script>
+
 @endsection

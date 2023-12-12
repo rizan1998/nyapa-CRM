@@ -7,14 +7,28 @@
 <li class="nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="database"></i><span
             class="menu-title text-truncate" data-i18n="Data Master">Data Website</span></a>
     <ul class="menu-content">
-        <li class="{{ request()->routeIs('admin.price.index*') ? 'active' : '' }}"><a class="d-flex align-items-center" href="{{route('admin.price.index')}}"><i data-feather="dollar-sign"></i><span
-                    class="menu-title text-truncate" data-i18n="Harga">Harga</span></a>
+        <li class="nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="dollar-sign"></i><span
+                    class="menu-title text-truncate" data-i18n="Pricing">Pricing</span></a>
+            <ul class="menu-content">
+                <li class="{{ request()->routeIs('admin.pricing.packet-name.index*') ? 'active' : '' }}"><a
+                        class="d-flex align-items-center" href="{{route('admin.pricing.packet-name.index')}}"><i
+                            data-feather="tag"></i><span class="menu-title text-truncate" data-i18n="Icon">Packet Name</span></a>
+                </li>
+                <li class="{{ request()->routeIs('admin.pricing.feature.index*') ? 'active' : '' }}"><a
+                        class="d-flex align-items-center" href="{{route('admin.pricing.feature.index')}}"><i
+                            data-feather="list"></i><span class="menu-title text-truncate" data-i18n="Icon">Feature</span></a>
+                </li>
+            </ul>
         </li>
+
         <li class="{{ request()->routeIs('admin.testimonial.index*') ? 'active' : '' }}"><a class="d-flex align-items-center" href="{{route('admin.testimonial.index')}}"><i data-feather="users"></i><span
                     class="menu-title text-truncate" data-i18n="Testimonial">Testimonial</span></a>
         </li>
         <li class="{{ request()->routeIs('admin.banner.index*') ? 'active' : '' }}"><a class="d-flex align-items-center" href="{{route('admin.banner.index')}}"><i data-feather="credit-card"></i><span
                     class="menu-title text-truncate" data-i18n="Banner">Banner</span></a>
+        </li>
+        <li class="{{ request()->routeIs('admin.button-link.index*') ? 'active' : '' }}"><a class="d-flex align-items-center" href="{{route('admin.button-link.index')}}"><i data-feather="credit-card"></i><span
+                    class="menu-title text-truncate" data-i18n="button-link">Button Link</span></a>
         </li>
         <li class="{{ request()->routeIs('admin.hero.index*') ? 'active' : '' }}"><a class="d-flex align-items-center" href="{{route('admin.hero.index')}}"><i data-feather="codepen"></i><span
                     class="menu-title text-truncate" data-i18n="hero">Hero</span></a>

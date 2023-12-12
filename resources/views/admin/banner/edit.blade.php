@@ -40,8 +40,8 @@
                 </div>
             
                 <div class="mb-1">
-                    <label class="form-label" for="detail">Detail</label>
-                    <input type="text" class="form-control" name="details" id="details" value="{{ $banner->details }}" required />
+                    <label class="form-label" for="details">Detail</label>
+                    <textarea id="details" name="details" class="form-control">{{ $banner->details }}</textarea>
                 </div>
             
                 <div class="mb-1">
@@ -63,4 +63,12 @@
         </div>
     </section>
 </div>
+@endsection
+@section('scripts')
+<script>
+    tinymce.init({
+    selector: 'textarea#details',
+    height: 350,
+    });
+</script>
 @endsection

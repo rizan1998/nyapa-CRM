@@ -5,7 +5,6 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomepageController;
-use App\Http\Controllers\PriceController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\SocialController;
@@ -15,6 +14,8 @@ use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\ServicesCardController;
 use App\Http\Controllers\HeroController;
 use App\Http\Controllers\StartedController;
+use App\Http\Controllers\ButtonLinkController;
+use App\Http\Controllers\PriceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,14 +27,6 @@ use App\Http\Controllers\StartedController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/price/create', function () {
-    return view('admin.price.form');
-});
-Route::get('/price', function () {
-    return view('admin.price.index');
-});
-
 
 //Route Landingpage
 Route::get('/', [HomepageController::class, 'index']);
@@ -50,15 +43,6 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
 Route::get('/banner', [DashboardController::class, 'banner']);
 Route::get('profile/{id}/edit', [UserController::class, 'edit'])->name('user.edit');
 Route::post('profile/{id}/update', [UserController::class, 'update'])->name('user.update');
-
-
-//route price
-Route::get('/price', [PriceController::class, 'index'])->name('admin.price.index');
-Route::get('/price/create', [PriceController::class, 'create'])->name('admin.price.create');
-Route::post('/price', [PriceController::class, 'store'])->name('admin.price.store');
-Route::get('/price/{id}/edit', [PriceController::class, 'edit'])->name('admin.price.edit');
-Route::put('/price/{id}', [PriceController::class, 'update'])->name('admin.price.update');
-Route::delete('/price/delete/{id}', [PriceController::class, 'destroy'])->name('admin.price.destroy');
 
 //route testimonial
 Route::get('/testimonial', [TestimonialController::class, 'index'])->name('admin.testimonial.index');
@@ -132,3 +116,26 @@ Route::get('/started/{id}/edit', [StartedController::class, 'edit'])->name('admi
 Route::put('/started/{id}', [StartedController::class, 'update'])->name('admin.started.update');
 Route::delete('/started/delete/{id}', [StartedController::class, 'destroy'])->name('admin.started.destroy');
 
+//route button Link
+Route::get('/button-link', [ButtonLinkController::class, 'index'])->name('admin.button-link.index');
+Route::get('/button-link/create', [ButtonLinkController::class, 'create'])->name('admin.button-link.create');
+Route::post('/button-link', [ButtonLinkController::class, 'store'])->name('admin.button-link.store');
+Route::get('/button-link/{id}/edit', [ButtonLinkController::class, 'edit'])->name('admin.button-link.edit');
+Route::put('/button-link/{id}', [ButtonLinkController::class, 'update'])->name('admin.button-link.update');
+Route::delete('/button-link/delete/{id}', [ButtonLinkController::class, 'destroy'])->name('admin.button-link.destroy');
+
+//route pricing feature
+Route::get('/pricing/feature', [PriceController::class, 'indexFeatures'])->name('admin.pricing.feature.index');
+Route::get('/pricing/feature/create', [PriceController::class, 'createFeatureForm'])->name('admin.pricing.feature.create');
+Route::post('/pricing/feature', [PriceController::class, 'storeFeature'])->name('admin.pricing.feature.store');
+Route::get('/pricing/feature/{id}/edit', [PriceController::class, 'editFeatureForm'])->name('admin.pricing.feature.edit');
+Route::put('/pricing/feature/{id}', [PriceController::class, 'updateFeature'])->name('admin.pricing.feature.update');
+Route::delete('/pricing/feature/delete/{id}', [PriceController::class, 'destroyFeature'])->name('admin.pricing.feature.destroy');
+
+//route pricing PacketName
+Route::get('/pricing/packet-name', [PriceController::class, 'indexPacketNames'])->name('admin.pricing.packet-name.index');
+Route::get('/pricing/packet-name/create', [PriceController::class, 'createPacketNameForm'])->name('admin.pricing.packet-name.create');
+Route::post('/pricing/packet-name', [PriceController::class, 'storePacketName'])->name('admin.pricing.packet-name.store');
+Route::get('/pricing/packet-name/{id}/edit', [PriceController::class, 'editPacketNameForm'])->name('admin.pricing.packet-name.edit');
+Route::put('/pricing/packet-name/{id}', [PriceController::class, 'updatePacketName'])->name('admin.pricing.packet-name.update');
+Route::delete('/pricing/packet-name/delete/{id}', [PriceController::class, 'destroyPacketName'])->name('admin.pricing.packet-name.destroy');

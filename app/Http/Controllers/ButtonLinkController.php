@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Service;
+use App\ButtonLink;
 
-class ServicesController extends Controller
+class ButtonLinkController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class ServicesController extends Controller
      */
     public function index()
     {
-        $service = Service::all();
-        return view('admin.services.index', compact('service'));
+        $buttonlink = ButtonLink::all();
+        return view('admin.button-link.index', compact('buttonlink'));
     }
 
     /**
@@ -25,7 +25,7 @@ class ServicesController extends Controller
      */
     public function create()
     {
-        return view('admin.services.form');
+        return view('admin.button-link.form');
     }
 
     /**
@@ -36,14 +36,16 @@ class ServicesController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'header' => 'required',
-            'detail' => 'required',
-            'text' => 'required',
+        $request->validate([
+            'link' => 'required'
         ]);
-        Service::create($validatedData);
 
-        return redirect()->route('admin.service.index')->with('success', 'Service Berhasil Dibuat');
+        $buttonlink = new ButtonLink();
+        $buttonlink->link = $request->input('link');
+
+        $buttonlink->save();
+        return redirect()->route('admin.button-link.index')->with('success','Tautan berhasil ditambahkan');
+
     }
 
     /**
@@ -65,8 +67,8 @@ class ServicesController extends Controller
      */
     public function edit($id)
     {
-        $service = Service::findOrFail($id);
-        return view('admin.services.edit', compact('service'));
+        $buttonlink = ButtonLink::findOrFail($id);
+        return view('admin.button-link.edit',compact('buttonlink'));
     }
 
     /**
@@ -79,14 +81,14 @@ class ServicesController extends Controller
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'header' => 'required',
-            'detail' => 'required',
-            'text' => 'required',
+            'link' => 'required'
         ]);
 
-        Service::whereId($id)->update($validatedData);
+        $buttonlink = ButtonLink::findOrFail($id);
+        $buttonlink->link = $validatedData['link'];
 
-        return redirect()->route('admin.service.index')->with('success', 'Service Berhasil Diubah');
+        $buttonlink->save();
+        return redirect()->route('admin.button-link.index')->with('success', 'Tautan Berhasil diubah');
     }
 
     /**
@@ -97,9 +99,9 @@ class ServicesController extends Controller
      */
     public function destroy($id)
     {
-        $service = Service::findOrFail($id);
-        $service->delete();
+        $buttonlink = ButtonLink::findOrFail($id);
+        $buttonlink->delete();
 
-        return redirect()->route('admin.service.index')->with('success','Service Berhasil Dihapus');
+        return redirect()->route('admin.button-link.index')->with('success','Tautan Berhasil dihapus');
     }
 }
