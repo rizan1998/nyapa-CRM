@@ -33,8 +33,8 @@
                     <input type="text" class="form-control" name="header" id="packet_name" value="{{ $hero->header }}"/>
                 </div>
                 <div class="mb-1">
-                    <label class="form-label" for="detail">Detail</label>
-                    <input type="text" class="form-control" name="details" id="details" value="{{ $hero->details }}" />
+                    <label class="form-label" for="details">Detail</label>
+                    <textarea id="details" name="details" class="form-control">{{ $hero->details }}</textarea>
                 </div>
                 <div class="mb-1">
                     <label class="form-label" for="images">Gambar 1</label>
@@ -63,4 +63,12 @@
         </div>
     </section>
 </div>
+@endsection
+@section('scripts')
+<script>
+    tinymce.init({
+            selector: 'textarea#details',
+            height: 350,
+        });
+</script>
 @endsection

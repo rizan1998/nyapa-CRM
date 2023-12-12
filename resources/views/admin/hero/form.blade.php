@@ -10,7 +10,7 @@
                         <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}">Dashboard</a>
                         </li>
                         <li class="breadcrumb-item">
-                            <a href="{{route('admin.banner.index')}}">hero</a>
+                            <a href="{{route('admin.hero.index')}}">hero</a>
                         </li>
                         <li class="breadcrumb-item">Tambah hero</li>
                     </ol>
@@ -31,7 +31,7 @@
                         <div class="card-header d-block">
                             <h6><i data-feather="info"></i> Form hero</h6>
                             <div class="row">
-                                <div class="col-6">
+                                <div class="col-12">
                                     <div class="mb-1">
                                         <label class="form-label" for="">Header</label>
                                         <input type="text" class="form-control" name="header" autocomplete="off"
@@ -39,8 +39,7 @@
                                     </div>
                                     <div class="mb-1">
                                         <label class="form-label" for="">Detail</label>
-                                        <input type="text" class="form-control" name="details" autocomplete="off"
-                                            placeholder="Detail" id="details" required />
+                                        <textarea id="details" name="details" class="form-control"></textarea>
                                     </div>
                                     <div class="mb-1">
                                         <label class="form-label" for="">Gambar 1</label>
@@ -66,4 +65,12 @@
         </div>
     </section>
 </div>
+@endsection
+@section('scripts')
+<script>
+    tinymce.init({
+            selector: 'textarea#details',
+            height: 350,
+        });
+</script>
 @endsection

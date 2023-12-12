@@ -8,6 +8,7 @@ class Testimonial extends Model
 {
     protected $table = 'testimonials';
     protected $fillable = [
+        'rating',
         'quote',
         'name',
         'job',

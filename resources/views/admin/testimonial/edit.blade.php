@@ -29,11 +29,14 @@
                 @method('PUT')
             
                 <div class="mb-1">
-                    <label class="form-label" for="quote">Quote</label>
-                    <input type="text" class="form-control" name="quote" id="quote" value="{{ $testimonials->quote }}"
+                    <label class="form-label" for="rating">Rating</label>
+                    <input type="number" class="form-control" name="rating" id="rating" value="{{ $testimonials->rating }}"
                         required />
                 </div>
-            
+                <div class="mb-1">
+                    <label class="form-label" for="quote">Detail</label>
+                    <textarea id="quote" name="quote" class="form-control">{{ $testimonials->quote }}</textarea>
+                </div>
                 <div class="mb-1">
                     <label class="form-label" for="name">Nama</label>
                     <input type="text" class="form-control" name="name" id="name" value="{{ $testimonials->name }}" required />
@@ -63,4 +66,12 @@
         </div>
     </section>
 </div>
+@endsection
+@section('scripts')
+<script>
+    tinymce.init({
+            selector: 'textarea#quote',
+            height: 350,
+        });
+</script>
 @endsection

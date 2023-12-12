@@ -10,7 +10,7 @@
                         <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}">Dashboard</a>
                         </li>
                         <li class="breadcrumb-item">
-                            <a href="#">Testimonial</a>
+                            <a href="{{route('admin.testimonial.index')}}">Testimonial</a>
                         </li>
                         <li class="breadcrumb-item">Tambah</li>
                     </ol>
@@ -33,9 +33,13 @@
                             <div class="row">
                                 <div class="col-6">
                                     <div class="mb-1">
+                                        <label class="form-label" for="">Rating</label>
+                                        <input type="number" class="form-control" name="rating" autocomplete="off"
+                                            placeholder="Rating 1 - 5" id="rating" required />
+                                    </div>
+                                    <div class="mb-1">
                                         <label class="form-label" for="">Quote</label>
-                                        <input type="text" class="form-control" name="quote" autocomplete="off"
-                                            placeholder="Quote" id="quote" required />
+                                        <textarea id="quote" name="quote" class="form-control"></textarea>
                                     </div>
                                     <div class="mb-1">
                                         <label class="form-label" for="">Nama</label>
@@ -68,4 +72,12 @@
         </div>
     </section>
 </div>
+@endsection
+@section('scripts')
+<script>
+    tinymce.init({
+            selector: 'textarea#quote',
+            height: 350,
+        });
+</script>
 @endsection
